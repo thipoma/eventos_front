@@ -33,22 +33,36 @@ function clickBotaoEnviar(){
         }
     }
 
-    // chamo a funcao FETCH para entrar em contato com o BackEnd
+    // chamo a funcao FETCH para entrar em contato com o BackEnd. Assim que receber a resposta,
+    // chama a função tratarResposta (para poder dar uma mensagem específica a cada código HTTP)
     fetch("http://localhost:8088/login", cabecalho)
         .then(res => tratarResposta(res));
 }
 
 function tratarResposta(objeto){
-    console.log(objeto.status);
+    // dependendo do código, faz uma determinada ação
+    // se for código 200 - extrai o JSON do corpo da resposta e chama a função 
+    //                     LOGAR passando o objeto de Resposta recebido
+    // se for 401 ou 404 exibe uma mensagem de erro na div "msgResposta"
+
+    console.log(objeto);
     if (objeto.status === 200){
-        alert("UHUUUUU");
+        //console.log("Deu certo o login...");
+        objeto.json().then(res => logar(res));
     }
     else if (objeto.status === 401){
         document.getElementById("msgResposta").innerHTML = "Senha Inv&aacute;lida";
     }
-    else {
+    else {  // 404
         document.getElementById("msgResposta").innerHTML = "Usu&aacute;rio n&atilde;o encontrado no Sistema";
     }
+}
+
+function logar(usuario){
+    // armazena a STRING correspondente ao objeto dos dados do usuário no LocalStorage 
+    // para indicar que o usuário está conectado e redireciona para a página HOME
+    localStorage.setItem("EvtUser", JSON.stringify(usuario) );
+    window.location = "home.html";  
 }
 
 function verificaTecla(event){
