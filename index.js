@@ -44,10 +44,10 @@ function tratarResposta(objeto){
         alert("UHUUUUU");
     }
     else if (objeto.status === 401){
-        alert("SENHA INVALIDA");
+        document.getElementById("msgResposta").innerHTML = "Senha Inv&aacute;lida";
     }
     else {
-        alert("USUARIO NAO EXISTE NO SISTEMA");
+        document.getElementById("msgResposta").innerHTML = "Usu&aacute;rio n&atilde;o encontrado no Sistema";
     }
 }
 

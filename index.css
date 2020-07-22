@@ -6,3 +6,10 @@ body{
     background-color: white;
     height: 100%;
 }
+
+#msgResposta{
+    color: red;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+}
