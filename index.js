@@ -11,3 +11,10 @@ function clickBotaoEnviar(){
 
     console.log("Email: "+txtEmail+" /  Senha: "+txtSenha);
 }
+
+function verificaTecla(event){
+    if (event.keyCode === 13){
+        clickBotaoEnviar();
+    }
+
+}
