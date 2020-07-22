@@ -34,3 +34,8 @@ function preencheInfo(){
         document.getElementById("infoUser").innerHTML = strInfo;
     }
 }
+
+function logout(){
+    localStorage.removeItem("EvtUser");
+    window.location = "index.html";
+}
